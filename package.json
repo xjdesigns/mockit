@@ -1,0 +1,31 @@
+{
+  "name": "electron-device-mimic",
+  "version": "1.0.0",
+  "description": "A device mimic application using Electron for great UI experience while tapping into raw power",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xjdesigns/electron-device-mimic.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xjdesigns/electron-device-mimic/issues"
+  },
+  "homepage": "https://github.com/xjdesigns/electron-device-mimic#readme",
+  "devDependencies": {
+    "electron": "^1.8.4",
+    "express": "^4.16.3",
+    "express-delay": "^0.2.0",
+    "json-server": "^0.12.1",
+    "node-fetch": "^2.1.2",
+    "shelljs": "^0.8.1"
+  },
+  "dependencies": {
+    "socket.io": "^2.1.0"
+  }
+}

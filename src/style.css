@@ -1,0 +1,31 @@
+/* // NOTE: This is for Electron so no auto prefixing needed */
+:root {
+  --hf: 36px;
+}
+.header {
+  height: var(--hf);
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  background-color: rgba(0,0,0,0.8);
+}
+.header h1 {
+  font-size: 1.25rem;
+  color: white;
+}
+.main {
+  padding: 24px;
+  height: calc(100vh - var(--hf) - var(--hf));
+  overflow-y: scroll;
+}
+.footer {
+  height: var(--hf);
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  background-color: rgba(0,0,0,0.8);
+  color: white;
+}
+.footer p {
+  font-size: .75rem;
+}
