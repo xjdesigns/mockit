@@ -1,15 +1,6 @@
-# Electron Device Mimic
+# MOCKIT
 
-This project is build off json-server and electron. The idea is to allow for local development while simulating devices sending requests with APIs.
-
-The goal is to serve a UI which gives you the option to select which device event to simulate, and will serve over the port you configured.
-
-Below is all TODOS:
-* choose which device
-* choose which ports
-* set which data on the fly
-* set which METHODS to use
-* Fire off shell commands
+TODO:
 
 
 You will want to check json-server for all documentation.
