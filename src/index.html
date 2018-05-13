@@ -4,75 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Device Simulator</title>
+  <title>Mockit</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="SIXPIXELS/style.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="header">
-    <h1>Device Simulator</h1>
+    <h1>Mockit</h1>
   </header>
   <main class="main">
     <p>
-      Click an action to simulate a device. This uses web sockets to communicate the actions to handle the outcome.
+      This is a first pass. I am handling calling json-server from actions, keeping track of PID to kill the node command on stop.
+      Using Monaco for the editor.
     </p>
-    <p>
-      Additional functionality will be coming soon.
-    </p>
-    <div class="flx">
-      <div class="i--xs-6">
-        <div
-          class="spx-tiles__tile spx-tiles__tile--icon"
-          data-icon="scanner"
-          id="scanner"
-        >
-          <div class="spx-contents">
-            <p>Scanner</p>
-            <p class="spx-contents__desc">Simulate belt scanner</p>
-          </div>
-        </div>
-      </div>
-      <div class="i--xs-6">
-        <div
-          class="spx-tiles__tile spx-tiles__tile--icon"
-          data-icon="fingerprint"
-          id="hand-scanner"
-        >
-          <div class="spx-contents">
-            <p>Hand Scanner</p>
-            <p class="spx-contents__desc">Simulate hand scanner</p>
-          </div>
-        </div>
-      </div>
-      <div class="i--xs-6">
-        <div
-          class="spx-tiles__tile spx-tiles__tile--icon"
-          data-icon="assessment"
-          id="weight-scanner"
-        >
-          <div class="spx-contents">
-            <p>Weight Scanner</p>
-            <p class="spx-contents__desc">Simulate weight scanner</p>
-          </div>
-        </div>
-      </div>
-      <div class="i--xs-6">
-        <div
-          class="spx-tiles__tile spx-tiles__tile--icon"
-          data-icon="shopping_cart"
-          id="checkout"
-        >
-          <div class="spx-contents">
-            <p>Payment</p>
-            <p class="spx-contents__desc">Simulate payment</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div id="editor" style="width: 100%; height: 50vh;"></div>
+    <button id="writeFile" class="spx-btn spx-btn--pr">
+      Write File
+    </button>
+    <button id="readFile" class="spx-btn spx-btn--pr">
+      Read File
+    </button>
+    <button id="start" class="spx-btn spx-btn--pr">
+      Start
+    </button>
+    <button id="end" class="spx-btn spx-btn--pr">
+      Stop
+    </button>
 
     <button id="clicker" class="spx-btn spx-btn--pr">
-      Simulate Scan
+      Test endpoint
     </button>
   </main>
   <footer class="footer">

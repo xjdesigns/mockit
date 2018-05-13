@@ -1,7 +1,7 @@
 {
-  "name": "electron-device-mimic",
+  "name": "mockit",
   "version": "1.0.0",
-  "description": "A device mimic application using Electron for great UI experience while tapping into raw power",
+  "description": "A desktop application for mocking out endpoints.",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -26,6 +26,7 @@
     "shelljs": "^0.8.1"
   },
   "dependencies": {
-    "socket.io": "^2.1.0"
+    "monaco-editor": "^0.13.0",
+    "monaco-loader": "^0.8.2"
   }
 }

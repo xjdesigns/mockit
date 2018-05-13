@@ -1,8 +1,9 @@
 'use strict'
 
+var fs = require('fs')
+var exec = require('child_process').exec
 var ipc = require('electron').ipcRenderer;
-var io = require('socket.io-client');
-var socket = io('http://localhost:7003');
+var mockService = require('./mockit.service')
 
 ipc.on('data-loaded', dataLoaded)
 
@@ -15,11 +16,62 @@ btn.onclick = simulateScan
 
 function simulateScan() {
   ipc.send('simulate-scan');
-
-  var msg = 'I came from my simulator app';
-  socket.emit('device:sim', msg)
 }
 
-socket.on('device:sim', function(msg) {
-  console.warn('this works, I am INDEX JS');
+var portPID
+var start = document.querySelector('#start')
+start.onclick = function() {
+  var startProcess = exec('node server.js', (err, stdout, stderr) => {
+    console.warn('RUNNING', err)
+    console.warn('RUNNING', stdout)
+    console.warn('RUNNING', stderr)
+  })
+  console.warn('startProcess:: PID', startProcess.pid)
+  portPID = startProcess.pid
+}
+
+// PID is set as a global variable
+var end = document.querySelector('#end')
+end.onclick = function() {
+  exec(`kill -9 ${portPID}`, (err, stdout, stderr) => {
+    console.warn('RUNNING', err)
+    console.warn('RUNNING', stdout)
+    console.warn('RUNNING', stderr)
+  })
+}
+
+// MONACO EDITOR
+const loader = require('monaco-loader')
+var uri
+loader().then(monaco => {
+  let editor = monaco.editor.create(document.querySelector('#editor'), {
+    language: 'javascript',
+    theme: 'vs-dark',
+    automaticLayout: true
+  })
+  editor.model.updateOptions({ tabSize: 2 })
+  mockService.readFile().then((data) => {
+    editor.model.setValue(data)
+  })
+  uri = editor.model.uri
 })
+
+// NODE READ/WRITE
+var writeDoc = document.querySelector('#writeFile')
+writeDoc.onclick = function() {
+  loader().then(monaco => {
+    let contents = monaco.editor.getModel(uri).getValue()
+    console.warn('contents::', contents)
+    mockService.writeFile(contents)
+  })
+}
+
+var readDoc = document.querySelector('#readFile')
+readDoc.onclick = function() {
+  loader().then(monaco => {
+    let editor = monaco.editor.getModel(uri)
+    mockService.readFile().then((data) => {
+      editor.setValue(data)
+    })
+  })
+}

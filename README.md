@@ -19,7 +19,7 @@ In the command line run the following command.
 
 This will serve the `db.json` file over `localhost:7001`.
 ```bash
-node json-server
+node server.js
 ```
 
 This starts the electron app

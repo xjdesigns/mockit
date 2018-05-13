@@ -12,7 +12,7 @@ app.on('ready', function () {
   // Initialize the window to our specified dimensions
   win = new BrowserWindow({
     width: 1600,
-    height: 800,
+    height: 1000,
     webPreferences: {
       nodeIntegration: true
     }
