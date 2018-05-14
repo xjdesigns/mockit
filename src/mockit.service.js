@@ -2,7 +2,7 @@ var fs = require('fs')
 
 var readFile = () => {
   return new Promise((res, rej) => {
-    fs.readFile('config.js', 'utf8', (err, data) => {
+    fs.readFile('./data/data.json', 'utf8', (err, data) => {
       if(err) {
         throw err
         rej(err)
@@ -14,7 +14,7 @@ var readFile = () => {
 }
 
 var writeFile = (contents) => {
-  fs.writeFile('config.js', contents, function(err) {
+  fs.writeFile('./data/data.json', contents, function(err) {
     if(err) {
       throw err
       return 'Error saving data'

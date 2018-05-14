@@ -18,16 +18,30 @@ function simulateScan() {
   ipc.send('simulate-scan');
 }
 
+
+// we need to allow for MVP of one file to use
+// this will save locally to use
+// errors we will need messaging. But we can check when the app launches and notify with a prompt
 var portPID
+var serverStarted = false
 var start = document.querySelector('#start')
 start.onclick = function() {
-  var startProcess = exec('node server.js', (err, stdout, stderr) => {
+  if(serverStarted) {
+    console.warn('the server is already running')
+    return
+  }
+  var startProcess = exec('json-server --watch ./data/data.json --port 3004', (err, stdout, stderr) => {
     console.warn('RUNNING', err)
     console.warn('RUNNING', stdout)
     console.warn('RUNNING', stderr)
+    if (err) {
+      throw err
+      return
+    }
   })
   console.warn('startProcess:: PID', startProcess.pid)
   portPID = startProcess.pid
+  serverStarted = true
 }
 
 // PID is set as a global variable
@@ -38,6 +52,7 @@ end.onclick = function() {
     console.warn('RUNNING', stdout)
     console.warn('RUNNING', stderr)
   })
+  serverStarted = false
 }
 
 // MONACO EDITOR
@@ -45,7 +60,7 @@ const loader = require('monaco-loader')
 var uri
 loader().then(monaco => {
   let editor = monaco.editor.create(document.querySelector('#editor'), {
-    language: 'javascript',
+    language: 'json',
     theme: 'vs-dark',
     automaticLayout: true
   })

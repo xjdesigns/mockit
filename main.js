@@ -37,16 +37,6 @@ app.on('ready', function () {
   win.on('closed', function () {
     win = null;
   });
-
-  fetch('http://localhost:7001/api/posts')
-    .then(res => res.json())
-    .then(json => {
-      console.warn('json res', json);
-      win.webContents.send('data-loaded', json)
-    })
-    .catch((err) => {
-      console.warn('err from fetch:: please start the json-server file but running node json-server');
-    })
 });
 
 ipcMain.on('simulate-scan', function() {
