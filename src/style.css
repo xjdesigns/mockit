@@ -1,31 +1,90 @@
 /* // NOTE: This is for Electron so no auto prefixing needed */
 :root {
   --hf: 36px;
+  --dark: #1e1e1e;
+  --mtk1: #d4d4d4;
+  --mtk4: #9cdcfe;
 }
+
+/* //HEADER */
 .header {
   height: var(--hf);
   padding: 12px;
   display: flex;
   align-items: center;
-  background-color: rgba(0,0,0,0.8);
+  background-color: var(--dark);
+  border-bottom: 1px solid var(--mtk4);
 }
 .header h1 {
   font-size: 1.25rem;
-  color: white;
+  color: var(--mtk4);
 }
+
+/* //MAIN */
 .main {
-  padding: 24px;
+  display: grid;
+  grid: 1fr / minmax(250px, 1fr) minmax(200px, 1fr) 3fr;
   height: calc(100vh - var(--hf) - var(--hf));
   overflow-y: scroll;
+  background: var(--dark);
+  color: white;
 }
+
+/* // SIDEBAR */
+.main__sidebar {
+  margin-right: 24px;
+  border-right: 1px solid var(--mtk4);
+}
+
+/* // PORTS */
+.main__ports {
+  margin-right: 24px;
+  border-right: 1px solid var(--mtk4);
+}
+
+.sidebar-input {
+  margin: 24px 12px;
+}
+
+.sidebar-action-group {
+  display: flex;
+  align-items: center;
+  margin: 0 0 12px;
+}
+.sidebar-action-group .sidebar-action {
+  flex: 1;
+  padding: 6px
+}
+
+.sidebar-action {
+  width: 100%;
+  display: block;
+  padding: 24px 48px;
+  background-color: var(--dark);
+  color: white;
+}
+
+.sidebar-action:hover {
+  background: var(--mtk4);
+  color: var(--dark);
+  /* transition: all .5s ease; */
+}
+
+/* //FOOTER */
 .footer {
   height: var(--hf);
   padding: 12px;
   display: flex;
   align-items: center;
-  background-color: rgba(0,0,0,0.8);
-  color: white;
+  background-color: white;
+  color: var(--dark);
 }
 .footer p {
   font-size: .75rem;
 }
+
+
+/* // EDITOR OVERRIDES */
+/* .mockit-editor .mtk4 {
+  color: green;
+} */

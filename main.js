@@ -13,6 +13,7 @@ app.on('ready', function () {
   win = new BrowserWindow({
     width: 1600,
     height: 1000,
+    // titleBarStyle: 'customButtonsOnHover',
     webPreferences: {
       nodeIntegration: true
     }

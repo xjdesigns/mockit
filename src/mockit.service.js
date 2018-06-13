@@ -1,20 +1,21 @@
-var fs = require('fs')
+const fs = require('fs')
 
-var readFile = () => {
+const dataFile = 'db.json'
+
+const readFile = () => {
   return new Promise((res, rej) => {
-    fs.readFile('./data/data.json', 'utf8', (err, data) => {
+    fs.readFile(`${dataFile}`, 'utf8', (err, data) => {
       if(err) {
         throw err
         rej(err)
       }
-      console.warn('data', data)
       res(data)
     })
   })
 }
 
-var writeFile = (contents) => {
-  fs.writeFile('./data/data.json', contents, function(err) {
+const writeFile = contents => {
+  fs.writeFile(`${dataFile}`, contents, function(err) {
     if(err) {
       throw err
       return 'Error saving data'
@@ -23,5 +24,16 @@ var writeFile = (contents) => {
   })
 }
 
+const parseDataForEditing = (data) => {
+  let endObj = {}
+  let keys = Object.keys(data)
+  let len = keys.length
+  for (let i = 0; i < len; i++) {
+    endObj[keys[i]] = data[keys[i]]
+  }
+  return endObj
+}
+
 exports.writeFile = writeFile
 exports.readFile = readFile
+exports.parseDataForEditing = parseDataForEditing

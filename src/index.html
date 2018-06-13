@@ -13,29 +13,78 @@
   <header class="header">
     <h1>Mockit</h1>
   </header>
-  <main class="main">
-    <p>
-      This is a first pass. I am handling calling json-server from actions, keeping track of PID to kill the node command on stop.
-      Using Monaco for the editor.
-    </p>
-    <div id="editor" style="width: 100%; height: 50vh;"></div>
-    <button id="writeFile" class="spx-btn spx-btn--pr">
-      Write File
-    </button>
-    <button id="readFile" class="spx-btn spx-btn--pr">
-      Read File
-    </button>
-    <button id="start" class="spx-btn spx-btn--pr">
-      Start
-    </button>
-    <button id="end" class="spx-btn spx-btn--pr">
-      Stop
-    </button>
 
-    <button id="clicker" class="spx-btn spx-btn--pr">
-      Test endpoint
-    </button>
+  <main class="main">
+    <div class="main__sidebar">
+      <!-- // PORTS -->
+      <div class="sidebar-input">
+        <form class="spx-form" novalidate="">
+          <div>
+            <label for="port" class="spx-label">Port</label>
+            <input id="port" class="spx-input" value="4000" type="text">
+          </div>
+          <div>
+            <label for="newEndpointInput" class="spx-label">New Endpoint</label>
+            <input id="newEndpointInput" class="spx-input" value="default" type="text">
+          </div>
+        </form>
+      </div>
+
+      <div class="sidebar-action-group">
+        <button id="createNewEndpoint" class="sidebar-action">
+          <!-- Write File -->
+          <i class="material-icons">create_new_folder</i>
+        </button>
+        <button id="writeFile" class="sidebar-action">
+          <!-- Write File -->
+          <i class="material-icons">edit</i>
+        </button>
+        <button id="readFile" class="sidebar-action">
+          <!-- Read File -->
+          <i class="material-icons">collections_bookmark</i>
+        </button>
+        <button id="start" class="sidebar-action">
+          <!-- Start -->
+          <i class="material-icons">play_arrow</i>
+        </button>
+        <button id="end" class="sidebar-action">
+          <!-- Stop -->
+          <i class="material-icons">stop</i>
+        </button>
+      </div>
+
+      <button id="clicker" class="sidebar-action">
+        Test endpoint
+      </button>
+    </div>
+
+    <div class="main__ports">
+      <!-- ENDPOINTS -->
+      <p>Available endpoints:</p>
+      <div id="endpoints"></div>
+    </div>
+
+    <div class="main__content">
+      <p>
+        This is a first pass. I am handling calling json-server from actions, keeping track of PID to kill the node command on stop.
+        Using Monaco for the editor.
+      </p>
+      <p>
+        Things to do:
+      </p>
+      <ul>
+        <li>Config Service</li>
+        <li>Loader and sequence when we initialApp</li>
+        <li>IDs for object props so I can set the data with METHODS</li>
+        <li>break data down to only read endpoints</li>
+        <li>Allow for dynamically adding endpoints</li>
+        <li>Create informational sidebar for details on how this works with json-server. Needs to be db.json, and have ids for METHODS TO WORK AND SAVE</li>
+      </ul>
+      <div>Status: <div class="spx-pill spx-pill--pr" id="apiStatus">inactive</div></div>
+      <div id="editor" class="mockit-editor" style="height: 50vh;"></div>
+    </div>
   </main>
+
   <footer class="footer">
     <p>Created with love by Jason Jacobson</p>
   </footer>
